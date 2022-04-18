@@ -31,34 +31,24 @@ function formatTime(time){
 
 /* ###################################################### */
 
-let liElement = document.querySelector('#menuUl');
-const menuArray = ['početna', 'cenovnik', 'usluge', 'lokacije', 'kontakt'];
+(function(){
+  let liElement = document.querySelector('#menuUl');
+  const menuArray = ['početna', 'cenovnik', 'usluge', 'lokacije', 'kontakt'];
+  
+  menuArray.forEach( link => {
+    liElement.innerHTML += 
+     `<li class="nav-item">
+         <a class="nav-link" href="#${link}">
+          ${link}
+          </a> 
+      </li>`;
+  });
+})();
 
-menuArray.forEach( link => {
-  liElement.innerHTML += 
-   `<li class="nav-item">
-       <a class="nav-link" href="#${link}">
-        ${link}
-        </a> 
-    </li>`;
-});
 
 /* ###################################################### */
 
 
-
-/*
-function understandRecursion(doIunderstandRecursion) {
-    const recursionAnswer = confirm('Do you understand recursion?'); // function logic
-    if (recursionAnswer === true) { // base case or stop point
-      return true;
-    }
-    understandRecursion(recursionAnswer); // recursive call
-  }
-  
-  understandRecursion();*/
-
-  /*samopozivajuca */
   /* ###################################################### */
 
 const countersValue = document.querySelectorAll('.value');
@@ -81,6 +71,8 @@ const countersValue = document.querySelectorAll('.value');
 
 
   /* ###################################################### */
+
+ 
   const priceList = [
       {
         priceTitle: 'Standard',
@@ -107,7 +99,8 @@ const countersValue = document.querySelectorAll('.value');
 
   let priceBoxElement = document.querySelector('.pricing-card');
 
-  let allPrice = priceList.map( list => {
+function pricenesto(priceList){
+  priceList.map( list => {
     priceBoxElement.innerHTML += ` 
     <div class="col-lg-3">
       <div class="pricing-box"> 
@@ -121,7 +114,10 @@ const countersValue = document.querySelectorAll('.value');
     </div>
     `;
 })
+return priceList;
+}
 
+pricenesto(priceList);
    /* ###################################################### */
 
 
