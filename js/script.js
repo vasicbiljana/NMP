@@ -31,20 +31,22 @@ function formatTime(time){
 
 /* ###################################################### */
 
-(function(){
-  let liElement = document.querySelector('#menuUl');
-  const menuArray = ['početna', 'cenovnik', 'usluge', 'lokacije', 'kontakt'];
-  
-  menuArray.forEach( link => {
-    liElement.innerHTML += 
-     `<li class="nav-item">
-         <a class="nav-link" href="#${link}">
-          ${link}
-          </a> 
-      </li>`;
-  });
-})();
 
+
+let liElement = document.querySelector('#menuUl');
+const menuArray = ['početna', 'cenovnik', 'usluge', 'lokacije', 'kontakt'];
+
+function meni(link){
+  liElement.innerHTML += 
+  `<li class="nav-item">
+      <a class="nav-link" href="#${link}">
+       ${link}
+       </a> 
+   </li>`;
+
+}
+
+menuArray.forEach(meni);
 
 /* ###################################################### */
 
