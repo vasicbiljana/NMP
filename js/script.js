@@ -99,8 +99,8 @@ const countersValue = document.querySelectorAll('.value');
 
   let priceBoxElement = document.querySelector('.pricing-card');
 
-function pricenesto(priceList){
-  priceList.map( list => {
+function price(priceElement){
+  priceElement = priceList.map( list => {
     priceBoxElement.innerHTML += ` 
     <div class="col-lg-3">
       <div class="pricing-box"> 
@@ -114,10 +114,11 @@ function pricenesto(priceList){
     </div>
     `;
 })
-return priceList;
+return priceElement;
 }
 
-pricenesto(priceList);
+price();
+
    /* ###################################################### */
 
 
@@ -143,10 +144,11 @@ pricenesto(priceList);
     ];
 
   let trainingZoneElement = document.querySelector('.trainingZone');
+  
+  const womenZone = trainignList.filter( training => training.cat === 'zene');
 
-    const womenZone = trainignList.filter( training => training.cat === 'zene');
-
-    womenZone.forEach( x => {
+  function women(zone){
+    zone = womenZone.forEach( x => {
       trainingZoneElement.innerHTML += `
       <div class="row womenZone">
         <div class="col-lg-5 training-img">
@@ -158,10 +160,13 @@ pricenesto(priceList);
         </div></div>
         `;
     });
+    return zone;
+  }
 
+  women();
 
-
-    trainignList.forEach( (t) => {
+  function trainign(zone){
+    zone =  trainignList.forEach( t => {
       if(t.cat === 'trening'){
         trainingZoneElement.innerHTML +=  `
           <div class="row trainingZone" >
@@ -175,6 +180,12 @@ pricenesto(priceList);
           </div>`;
         }
       })
+    return zone;
+  }
+
+  trainign();
+
+    
 
  /* ###################################################### */
 
@@ -232,7 +243,7 @@ const locationList = [
 
 ];
 
-/* sffsfsf*/ 
+/* */ 
 let result = locationList.reduce((acc, person) => acc + 1, 0);
 let dataLocation = document.getElementById('data-location');
 dataLocation.textContent = result;
@@ -243,23 +254,27 @@ let locationElement = document.querySelector('#locationElements');
 locationList.sort( (a, b) => {
   if(a.locationTitle < b.locationTitle) { return -1; }
   return 0;
-})
-
-locationList.forEach( (location) => {
-  locationElement.innerHTML +=  `
-    <div class="location-card">
-    <div class="location-image">
-  
-        <img src="img/${location.img}" class="location-thumb" alt="">
-    </div>
-    <div class="location-info p-2">
-        <h2 class="location-title p-2">${location.locationTitle}</h2>
-        <p class="location-address p-2">${location.address}</p>
-        <span class="phone">${location.phone}</span>
-    </div>
-</div>
-    `;
 });
+
+
+(function(){
+  locationList.forEach( (location) => {
+    locationElement.innerHTML +=  `
+      <div class="location-card">
+      <div class="location-image">
+    
+          <img src="img/${location.img}" class="location-thumb" alt="">
+      </div>
+      <div class="location-info p-2">
+          <h2 class="location-title p-2">${location.locationTitle}</h2>
+          <p class="location-address p-2">${location.address}</p>
+          <span class="phone">${location.phone}</span>
+      </div>
+  </div>
+      `;
+  });
+})();
+
 
 
 const locationContainers = document.querySelectorAll('.location-container');
@@ -287,7 +302,7 @@ let scroll =  () => window.scrollTo(0,0);
 let scrollElement = document.getElementById('scroll');
 scrollElement.onclick = scroll;
 
-   /* ###################################################### */
+  /* ###################################################### */
 
 
  
